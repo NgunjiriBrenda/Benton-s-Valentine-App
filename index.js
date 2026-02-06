@@ -42,22 +42,6 @@ setInterval(() => {
 }, 400);
 
 
-document.body.addEventListener("click", () => {
-    const music = document.getElementById("bgMusic");
-    music.volume = 0;
-    music.play();
-    let vol = 0;
-    const fade = setInterval(() => {
-        if (vol < 0.4) {
-            vol += 0.01;
-            music.volume = vol;
-        } else {
-            clearInterval(fade);
-        }
-    }, 100);
-}, { once: true });
-
-
 const descriptions = {
     photo1: "Your beautiful smile lights up my day 💜",
     photo2: "Remember this fun moment together? 😍",
