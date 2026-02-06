@@ -1,34 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Valentine</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Valentine 💗</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  /* Fade-in animation */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .animate-fadeIn {
+    animation: fadeIn 1s ease forwards;
+  }
 
-    <script src="https://cdn.tailwindcss.com"></script>
+  /* Floating hearts */
+  .floating-heart {
+    position: absolute;
+    pointer-events: none;
+    animation-name: floatUp;
+    animation-timing-function: linear;
+    animation-iteration-count: 1;
+  }
 
+  @keyframes floatUp {
+    from { transform: translateY(100vh) rotate(0deg); opacity:1; }
+    to { transform: translateY(-100vh) rotate(360deg); opacity:0; }
+  }
+</style>
 </head>
-<body class="min-h-screen bg-gradient-to-br from pink-100 to-rose-200 flex flex-col items-center justify-center px-4 relative overflow-hidden">
+<body class="min-h-screen bg-gradient-to-br from-pink-100 to-purple-200 flex flex-col items-center justify-center px-4 relative overflow-hidden">
 
-    <div id="hearts-container" class="absolute top-0 left-0 w-full h-full pointer-events-none">
+  <!-- Hearts container -->
+  <div id="hearts-container" class="absolute top-0 left-0 w-full h-full pointer-events-none"></div>
 
-    </div>
+  <!-- Valentine GIF -->
+  <img
+    src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExNzdzazc1endqcDJ4YTVxMzJ1NGttbGk5M2Q5eXZndnFzdXM2aTQ5aCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/ar0Fj7jzThwfXMzhPc/giphy.webp"
+    alt="Valentine GIF"
+    class="w-56 h-56 mb-6 animate-fadeIn"
+  >
 
-    <img
-          src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExNzdzazc1endqcDJ4YTVxMzJ1NGttbGk5M2Q5eXZndnFzdXM2aTQ5aCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/ar0Fj7jzThwfXMzhPc/giphy.webp"
-          alt="Valentine GIF"
-          class="w-56 h-56 mb-6 animate-fadeIn"
-    >
+  <!-- Heading -->
+  <h1 class="text-2xl sm:text-3xl font-bold text-rose-600 mb-4 text-center animate-fadeIn">
+    Yayy!! 🥳😉 You are my Valentine 💗
+  </h1>
 
-    <h1 class="text-2xl sm:text-3xl font-bold text-rose-600 mb-4 text-center animate-fadeIn"> Yayy!!🥳😉 You are my Valentine 💗</h1>
+  <!-- Description -->
+  <p class="text-gray-700 text-base sm:text-lg text-center mb-6 animate-fadeIn">
+    I can't wait to spend more amazing moments with you 💜
+  </p>
 
-    <p class="text-gray-700 text-base sm:text-lg text-center mb-6 animate-fadeIn">
-        I can't wait to spend more amazing moments with you 💜
-    </p>
+  <!-- Back button -->
+  <a href="index.html"
+     class="bg-rose-500 text-white px-8 py-3 rounded-full font-medium shadow-lg transition hover:scale-105 animate-fadeIn">
+    Back to Home 🎀
+  </a>
 
-    <a href="index.html" class="bg-rose-500 text-white px-8 py-3nounded-full font-medium sgadow-lg transition hover:scale-105">
-        Back to Home 🎀
-    
-    
+  <!-- JS for floating hearts -->
+  <script>
+    const heartsContainer = document.getElementById('hearts-container');
+
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.classList.add('floating-heart');
+      heart.innerText = '💖';
+      
+      // Random position and size
+      heart.style.left = Math.random() * window.innerWidth + 'px';
+      const size = Math.random() * 20 + 20;
+      heart.style.fontSize = size + 'px';
+      heart.style.animationDuration = (Math.random() * 2 + 3) + 's';
+      heartsContainer.appendChild(heart);
+
+      // Remove heart after animation ends
+      heart.addEventListener('animationend', () => heart.remove());
+    }
+
+    // Create a new heart every 300ms
+    setInterval(createHeart, 300);
+  </script>
+
 </body>
 </html>

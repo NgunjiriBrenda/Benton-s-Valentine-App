@@ -89,3 +89,25 @@ const noBtn=document.getElementbyId('no-btn');
             noBtn.style.left = randomX + 'px';
             noBtn.style.top = randomY + 'px';
         });
+
+
+ const heartsContainer = document.getElementById('hearts-container');
+
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.classList.add('floating-heart');
+      heart.innerText = '💖';
+      
+      // Random position and size
+      heart.style.left = Math.random() * window.innerWidth + 'px';
+      const size = Math.random() * 20 + 20;
+      heart.style.fontSize = size + 'px';
+      heart.style.animationDuration = (Math.random() * 2 + 3) + 's';
+      heartsContainer.appendChild(heart);
+
+      // Remove heart after animation ends
+      heart.addEventListener('animationend', () => heart.remove());
+    }
+
+    // Create a new heart every 300ms
+    setInterval(createHeart, 300);
