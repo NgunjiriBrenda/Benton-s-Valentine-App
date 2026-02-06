@@ -1,48 +1,187 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Memories</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Memories 💜</title>
 
-    <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
 
+  <style>
+    /* Fade in */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .animate-fadeIn {
+      animation: fadeIn 1s ease forwards;
+    }
+
+    /* Animated background */
+    @keyframes bgShift {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    .animated-bg {
+      background-size: 400% 400%;
+      animation: bgShift 20s ease infinite;
+    }
+
+    /* Floating items */
+    .float {
+      position: absolute;
+      pointer-events: none;
+      animation: floatUp linear infinite;
+    }
+
+    .lily {
+      font-size: 3rem;
+      opacity: 0.5;
+    }
+
+    .heart {
+      font-size: 1.6rem;
+      opacity: 0.4;
+    }
+
+    @keyframes floatUp {
+      from {
+        transform: translateY(110vh) rotate(0deg);
+      }
+      to {
+        transform: translateY(-130vh) rotate(360deg);
+      }
+    }
+
+    /* Modal */
+    .modal {
+      display: none;
+    }
+    .modal.active {
+      display: flex;
+    }
+  </style>
 </head>
-<body class="min-h-screen bg-gradient-to-br from-pink-50 to-rose-100 flex flex-col items-center justify-center px-4 py-8">
 
-    <h1 class="text-2xl sm:text-3xl font-bold text-rose-600 mb-6 text-center animate-fadeIn">Some of our special Moments 💜</h1>
+<body class="relative min-h-screen overflow-hidden animated-bg
+             bg-gradient-to-br from-purple-200 via-purple-300 to-purple-500
+             flex flex-col items-center justify-center px-4 py-8">
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
-        <div class="overflow-hidden rounded-xl shadow-lg animate-fadeIn">
-            <img src="assets/photo4.jpeg" alt="Memory1" class="w-full h-48 object-cover hover:scale-105 transition-transform duration-300">
+  <!-- Floating Lilies -->
+  <span class="float lily" style="left: 5%; animation-duration: 30s;">🌸</span>
+  <span class="float lily" style="left: 30%; animation-duration: 26s;">🌸</span>
+  <span class="float lily" style="left: 60%; animation-duration: 32s;">🌸</span>
+  <span class="float lily" style="left: 85%; animation-duration: 28s;">🌸</span>
 
-        </div>
+  <!-- Floating Hearts -->
+  <span class="float heart" style="left: 15%; animation-duration: 18s;">💜</span>
+  <span class="float heart" style="left: 45%; animation-duration: 22s;">💖</span>
+  <span class="float heart" style="left: 75%; animation-duration: 20s;">💗</span>
 
-        <div class="overflow-hidden rounded-xl shadow-lg animate-fadeIn">
-            <img src="assets/photo5.jpeg" alt="Memory2" class="w-full h-48 object-cover hover:scale-105 transition-transform duration-300">
-        </div>
+  <!-- Title -->
+  <h1 class="text-2xl sm:text-3xl font-bold text-purple-800 mb-6 text-center animate-fadeIn">
+    Some of our special moments 💜
+  </h1>
 
-        <div class="overflow-hidden rounded-xl shadow-lg animate-fadeIn">
-            <img src="assets/photo7.jpeg" alt="Memory3" class="w-full h-48 object-cover hover:scale-105 transition-transform duration-300">
+  <!-- Images Grid -->
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-5
+              max-w-3xl w-full mb-6 animate-fadeIn">
 
-        </div>
-
-        <div class="overflow-hidden rounded-xl shadow-lg animate-fadeIn">
-            <img src="assets/photo8.jpeg" alt="Memory4" class="w-full h-48 object-cover hover:scale-105 transition-transform duration-300">
-
-        </div>   
-
+    <div onclick="openModal(0)"
+         class="cursor-pointer bg-white/70 backdrop-blur-md rounded-2xl p-3
+                shadow-[0_20px_40px_rgba(128,90,213,0.35)]
+                hover:shadow-[0_25px_50px_rgba(128,90,213,0.5)]
+                transition-shadow duration-500">
+      <img src="assets/photo4.jpeg"
+           class="w-full h-48 object-cover rounded-xl
+                  transition-transform duration-500 hover:scale-105">
     </div>
 
-    <a  
-       href="question.html"
-       class="inline-block bg-rose-500 text-white px-8 py-3 rounded-full font-medium shadow-lg active:scale-95 transition"
-       >  
-          Click here for a suprise question 💌 🎁
-    </a>
+    <div onclick="openModal(1)"
+         class="cursor-pointer bg-white/70 backdrop-blur-md rounded-2xl p-3
+                shadow-[0_20px_40px_rgba(128,90,213,0.35)]
+                hover:shadow-[0_25px_50px_rgba(128,90,213,0.5)]
+                transition-shadow duration-500">
+      <img src="assets/photo5.jpeg"
+           class="w-full h-48 object-cover rounded-xl
+                  transition-transform duration-500 hover:scale-105">
+    </div>
 
-    
+    <div onclick="openModal(2)"
+         class="cursor-pointer bg-white/70 backdrop-blur-md rounded-2xl p-3
+                shadow-[0_20px_40px_rgba(128,90,213,0.35)]
+                hover:shadow-[0_25px_50px_rgba(128,90,213,0.5)]
+                transition-shadow duration-500">
+      <img src="assets/photo7.jpeg"
+           class="w-full h-48 object-cover rounded-xl
+                  transition-transform duration-500 hover:scale-105">
+    </div>
 
-    
+    <div onclick="openModal(3)"
+         class="cursor-pointer bg-white/70 backdrop-blur-md rounded-2xl p-3
+                shadow-[0_20px_40px_rgba(128,90,213,0.35)]
+                hover:shadow-[0_25px_50px_rgba(128,90,213,0.5)]
+                transition-shadow duration-500">
+      <img src="assets/photo8.jpeg"
+           class="w-full h-48 object-cover rounded-xl
+                  transition-transform duration-500 hover:scale-105">
+    </div>
+
+  </div>
+
+  <!-- Button -->
+  <a href="question.html"
+     class="inline-block bg-gradient-to-r from-purple-600 to-pink-500
+            text-white px-6 py-3 rounded-full text-sm sm:text-base
+            font-medium shadow-xl hover:scale-105
+            active:scale-95 transition-all duration-500">
+    Click here for a surprise question 💌 🎁
+  </a>
+
+  <!-- Modal -->
+  <div id="modal"
+       class="modal fixed inset-0 bg-black/40 backdrop-blur-sm
+              items-center justify-center z-50 px-4">
+    <div class="bg-white rounded-3xl p-6 max-w-sm text-center shadow-2xl animate-fadeIn">
+      <p id="modalText" class="text-gray-700 text-lg mb-4"></p>
+      <button onclick="closeModal()"
+              class="bg-purple-600 text-white px-6 py-2 rounded-full hover:scale-105 transition">
+        Close 💜
+      </button>
+    </div>
+  </div>
+
+  <script>
+    const messages = [
+      "This smile right here? It melts me every single time 😌💜",
+      "Every time I see this photo, I fall for you all over again.",
+      "You looked so beautiful here, I honestly couldn’t look away 😏",
+      "Moments like this make me wish I could freeze time with you."
+    ];
+
+    function openModal(index) {
+      document.getElementById("modalText").innerText = messages[index];
+      document.getElementById("modal").classList.add("active");
+    }
+
+    function closeModal() {
+      document.getElementById("modal").classList.remove("active");
+    }
+  </script>
+
 </body>
 </html>
