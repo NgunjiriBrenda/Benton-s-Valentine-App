@@ -1,35 +1,125 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Appreciation 💜</title>
-    <script scr="https://cdn.tailwindcss.com"></script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Appreciation 💜</title>
+<script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="min-h-screen  bg-gradient-to-br from pink-50 to-rose-100 flex items-center justify-center">
 
-    <main class="w-full max-w-sm px-5 text-center animate-fadeIn">
-        <img
-            src="assets/photo1.jpeg"
-            alt="Her Picture"
-            class="w-48 h-48 mx-auto rounded-2xl object-cover shadow-xl mb-6"
-            />
+<body class="min-h-screen relative overflow-hidden animate-bg flex flex-col items-center justify-start py-8">
 
-        <p class="text-gray-700 text-base leading-relaxed mb-6">
-            Everyday I am grateful for you 💜 <br> Your smile, your laughter and your kindness make every moment better. <br/>
-            I just wanted to let you know how much you mean to me.
-        </p>
+<!-- Background Music -->
+<audio id="bgMusic" loop>
+    <source src="./assets/love-song.mp3" type="audio/mpeg">
+</audio>
 
-        <a 
-            href="memories.html"
-            class="inline-block bg-rose-500 text-white px-8 py-3 rounded-full font-medium shadow-lg active:scale-95 transition"
-            >
-              See our meories 💌
-              
+<!-- Floating Lilies -->
+<div class="flowers"></div>
+
+<!-- Sparkles -->
+<div class="sparkles"></div>
+
+<main class="w-full max-w-4xl px-5 text-center animate-fadeIn z-10">
+
+  
+<div class="bg-white/70 backdrop-blur-md rounded-3xl shadow-xl p-6 mb-8">
+    <p class="text-gray-500 text-lg sm:text-xl leading-relaxed">
+        Everyday I am grateful for you 💜 <br> 
+        Your smile, your laughter and your kindness make every moment better. <br/>
+        Click the photos below to see why you mean so much to me.
+    </p>
+
+</div>
+
+    <div class="grid grid-cols-2 sm:grid-cols-2 gap-6 justify-items-center">
+        <!-- Photo 1 -->
+        <div class="relative group cursor-pointer transition-transform duration-300 hover:scale-105 hover:shadow-2xl">
+            <img src="assets/her.jpg" class="rounded-2xl object-cover w-48 h-48 sm:w-52 sm:h-52" onclick="showDescription('photo1')"/>
+        </div>
+        <!-- Photo 2 -->
+        <div class="relative group cursor-pointer transition-transform duration-300 hover:scale-105 hover:shadow-2xl">
+            <img src="assets/photo1.jpeg" class="rounded-2xl object-cover w-48 h-48 sm:w-52 sm:h-52" onclick="showDescription('photo2')"/>
+        </div>
+
+        <a href="memories.html"
+             class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2
+          px-4 py-2 sm:px-6 sm:py-3
+          rounded-full text-sm sm:text-base font-medium shadow-lg
+          bg-purple-500 text-white
+          hover:bg-gradient-to-r hover:from-purple-500 hover:to-pink-400
+          hover:scale-105 active:scale-95 transition-all duration-500 z-20">
+             See our memories 💌
         </a>
 
-    </main>
+        <div class="relative group cursor-pointer transition-transform duration-300 hover:scale-105 hover:shadow-2xl">
+            <img src="assets/photo2.jpg" class="rounded-2xl object-cover w-48 h-48 sm:w-52 sm:h-52" onclick="showDescription('photo3')"/>
+        </div>
+        <!-- Photo 4 -->
+        <div class="relative group cursor-pointer transition-transform duration-300 hover:scale-105 hover:shadow-2xl">
+            <img src="assets/photo3.jpg" class="rounded-2xl object-cover w-48 h-48 sm:w-52 sm:h-52" onclick="showDescription('photo4')"/>
+        </div>
+    </div>
 
-    
+</main>
+
+<div id="modal" class="fixed inset-0 bg-black/60 flex items-center justify-center hidden z-50">
+    <div class="bg-white rounded-3xl p-6 max-w-sm text-center relative shadow-2xl">
+        <span id="modalClose" class="absolute top-3 right-4 cursor-pointer text-gray-500 text-xl font-bold">&times;</span>
+        <p id="modalText" class="text-gray-800 text-lg leading-relaxed"></p>
+    </div>
+</div>
+
+<style>
+/* Background gradient animation */
+body.animate-bg {
+    background: linear-gradient(120deg, #fbcfe8, #f9a8d4, #c084fc, #a855f7);
+    background-size: 400% 400%;
+    animation: bgShift 12s ease infinite;
+}
+@keyframes bgShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Fade in animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.animate-fadeIn { animation: fadeIn 1.3s ease forwards; }
+
+/* Floating lilies */
+.flowers span {
+    position: absolute;
+    bottom: -30px;
+    font-size: 26px;
+    animation: floatUpRotate 7s linear infinite;
+    opacity: 0.75;
+}
+@keyframes floatUpRotate {
+    0% { transform: translateY(0) rotate(0deg) scale(1); opacity: 0; }
+    30% { opacity: 0.8; }
+    100% { transform: translateY(-120vh) rotate(360deg) scale(1.6); opacity: 0; }
+}
+
+/* Floating sparkles */
+.sparkles span {
+    position: absolute;
+    font-size: 8px;
+    color: #fffacd;
+    opacity: 0.8;
+    animation: sparkleFloat 4s linear infinite;
+}
+@keyframes sparkleFloat {
+    0% { transform: translateY(0) scale(0.5); opacity: 0; }
+    50% { opacity: 0.9; }
+    100% { transform: translateY(-100vh) scale(1); opacity: 0; }
+}
+</style>
+
+<script src="./index.js"></script>
+
 </body>
 </html>

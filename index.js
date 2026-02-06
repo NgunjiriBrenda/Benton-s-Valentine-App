@@ -19,3 +19,60 @@ const flowerContainer = document.querySelector(".flowers");
         }, { once: true });
    
 
+const flowersContainer = document.querySelector(".flowers");
+setInterval(() => {
+    const flower = document.createElement("span");
+    flower.innerHTML = "🌸";
+    flower.style.left = Math.random() * 100 + "vw";
+    flower.style.animationDuration = 5 + Math.random() * 3 + "s";
+    flowerContainer.appendChild(flower);
+    setTimeout(() => { flower.remove(); }, 8000);
+}, 500);
+
+
+const sparkleContainer = document.querySelector(".sparkles");
+setInterval(() => {
+    const sparkle = document.createElement("span");
+    sparkle.innerHTML = "✨";
+    sparkle.style.left = Math.random() * 100 + "vw";
+    sparkle.style.animationDuration = 3 + Math.random() * 2 + "s";
+    sparkle.style.fontSize = 5 + Math.random() * 6 + "px";
+    sparkleContainer.appendChild(sparkle);
+    setTimeout(() => { sparkle.remove(); }, 5000);
+}, 400);
+
+
+document.body.addEventListener("click", () => {
+    const music = document.getElementById("bgMusic");
+    music.volume = 0;
+    music.play();
+    let vol = 0;
+    const fade = setInterval(() => {
+        if (vol < 0.4) {
+            vol += 0.01;
+            music.volume = vol;
+        } else {
+            clearInterval(fade);
+        }
+    }, 100);
+}, { once: true });
+
+
+const descriptions = {
+    photo1: "Your beautiful smile lights up my day 💜",
+    photo2: "Remember this fun moment together? 😍",
+    photo3: "I love how you make everything better ✨",
+    photo4: "You are my sunshine and happiness 🌸"
+};
+
+function showDescription(photoId){
+    const modal = document.getElementById('modal');
+    const modalText = document.getElementById('modalText');
+    modalText.textContent = descriptions[photoId];
+    modal.classList.remove('hidden');
+}
+
+
+document.getElementById('modalClose').addEventListener('click', () => {
+    document.getElementById('modal').classList.add('hidden');
+});
