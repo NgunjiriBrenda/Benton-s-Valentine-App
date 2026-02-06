@@ -60,3 +60,19 @@ function showDescription(photoId){
 document.getElementById('modalClose').addEventListener('click', () => {
     document.getElementById('modal').classList.add('hidden');
 });
+
+ const messages = [
+      "This smile right here? It melts me every single time 😌💜",
+      "Every time I see this photo, I fall for you all over again 😍😩",
+      "You are so beautiful princess and i'm ever proud of you 😝✨ ",
+      "Moments like this make me wish I could freeze time with you 🌸💜"
+    ];
+
+    function openModal(index) {
+      document.getElementById("modalText").innerText = messages[index];
+      document.getElementById("modal").classList.add("active");
+    }
+
+    function closeModal() {
+      document.getElementById("modal").classList.remove("active");
+    }
