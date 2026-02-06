@@ -76,3 +76,16 @@ document.getElementById('modalClose').addEventListener('click', () => {
     function closeModal() {
       document.getElementById("modal").classList.remove("active");
     }
+
+
+const noBtn=document.getElementbyId('no-btn');
+        noBtn.addEventListener('mouseenter', () => {
+            const maxX = window.innerWidth - noBtn.offsetWidth -20;
+            const maxY = window.innerHeight - noBtn.offsetHeight - 20;
+
+            const randomX = Math.floor(Math.random() * maxX);
+            const randomY = Math.floor(Math.random() * maxY);
+
+            noBtn.style.left = randomX + 'px';
+            noBtn.style.top = randomY + 'px';
+        });
