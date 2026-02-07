@@ -1,80 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Our Memories 💜</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Our Memories 💜</title>
+<script src="https://cdn.tailwindcss.com"></script>
 
-  <script src="https://cdn.tailwindcss.com"></script>
+<style>
+  /* Fade in */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .animate-fadeIn { animation: fadeIn 1s ease forwards; }
 
-  <style>
-    /* Fade in */
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-    .animate-fadeIn {
-      animation: fadeIn 1s ease forwards;
-    }
+  /* Animated background */
+  @keyframes bgShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  .animated-bg {
+    background-size: 400% 400%;
+    animation: bgShift 20s ease infinite;
+  }
 
-    /* Animated background */
-    @keyframes bgShift {
-      0% {
-        background-position: 0% 50%;
-      }
-      50% {
-        background-position: 100% 50%;
-      }
-      100% {
-        background-position: 0% 50%;
-      }
-    }
+  /* Floating items */
+  .float {
+    position: absolute;
+    pointer-events: none;
+    animation: floatUp linear infinite;
+  }
+  .lily { font-size: 3rem; opacity: 0.5; }
+  .heart { font-size: 1.6rem; opacity: 0.4; }
 
-    .animated-bg {
-      background-size: 400% 400%;
-      animation: bgShift 20s ease infinite;
-    }
+  @keyframes floatUp {
+    from { transform: translateY(110vh) rotate(0deg); }
+    to { transform: translateY(-130vh) rotate(360deg); }
+  }
 
-    /* Floating items */
-    .float {
-      position: absolute;
-      pointer-events: none;
-      animation: floatUp linear infinite;
-    }
-
-    .lily {
-      font-size: 3rem;
-      opacity: 0.5;
-    }
-
-    .heart {
-      font-size: 1.6rem;
-      opacity: 0.4;
-    }
-
-    @keyframes floatUp {
-      from {
-        transform: translateY(110vh) rotate(0deg);
-      }
-      to {
-        transform: translateY(-130vh) rotate(360deg);
-      }
-    }
-
-    /* Modal */
-    .modal {
-      display: none;
-    }
-    .modal.active {
-      display: flex;
-    }
-  </style>
+  /* Modal */
+  .modal { display: none; }
+  .modal.active { display: flex; }
+</style>
 </head>
 
 <body class="relative min-h-screen overflow-hidden animated-bg
@@ -87,58 +55,53 @@
   <span class="float lily" style="left: 60%; animation-duration: 32s;">🌸</span>
   <span class="float lily" style="left: 85%; animation-duration: 28s;">🌸</span>
 
- 
+  <!-- Floating Hearts -->
   <span class="float heart" style="left: 15%; animation-duration: 18s;">💜</span>
   <span class="float heart" style="left: 45%; animation-duration: 22s;">💖</span>
   <span class="float heart" style="left: 75%; animation-duration: 20s;">💗</span>
 
- 
+  <!-- Title -->
   <h1 class="text-2xl sm:text-3xl font-bold text-purple-800 mb-6 text-center animate-fadeIn">
     Some of our special moments 💜
   </h1>
 
- 
-  <div class="grid grid-cols-1 sm:grid-cols-2 gap-5
-              max-w-3xl w-full mb-6 animate-fadeIn">
+  <!-- Image Grid -->
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-2xl w-full mb-6 animate-fadeIn">
 
     <div onclick="openModal(0)"
-         class="cursor-pointer bg-white/70 backdrop-blur-md rounded-2xl p-5
-                shadow-[0_20px_40px_rgba(128,90,213,0.35)]
-                hover:shadow-[0_25px_50px_rgba(128,90,213,0.5)]
+         class="cursor-pointer bg-white/70 backdrop-blur-md rounded-2xl overflow-hidden
+                shadow-[0_15px_30px_rgba(128,90,213,0.35)]
+                hover:shadow-[0_20px_40px_rgba(128,90,213,0.5)]
                 transition-shadow duration-500">
       <img src="assets/photo4.jpeg"
-           class="w-full h-48 object-cover rounded-xl
-                  transition-transform duration-500 hover:scale-105">
+           class="w-full h-36 sm:h-40 md:h-44 object-cover rounded-xl transition-transform duration-500 hover:scale-105">
     </div>
 
     <div onclick="openModal(1)"
-         class="cursor-pointer bg-white/70 backdrop-blur-md rounded-2xl p-5
-                shadow-[0_20px_40px_rgba(128,90,213,0.35)]
-                hover:shadow-[0_25px_50px_rgba(128,90,213,0.5)]
+         class="cursor-pointer bg-white/70 backdrop-blur-md rounded-2xl overflow-hidden
+                shadow-[0_15px_30px_rgba(128,90,213,0.35)]
+                hover:shadow-[0_20px_40px_rgba(128,90,213,0.5)]
                 transition-shadow duration-500">
       <img src="assets/photo5.jpeg"
-           class="w-full h-48 object-cover rounded-xl
-                  transition-transform duration-500 hover:scale-105">
+           class="w-full h-36 sm:h-40 md:h-44 object-cover rounded-xl transition-transform duration-500 hover:scale-105">
     </div>
 
     <div onclick="openModal(2)"
-         class="cursor-pointer bg-white/70 backdrop-blur-md rounded-2xl p-5
-                shadow-[0_20px_40px_rgba(128,90,213,0.35)]
-                hover:shadow-[0_25px_50px_rgba(128,90,213,0.5)]
+         class="cursor-pointer bg-white/70 backdrop-blur-md rounded-2xl overflow-hidden
+                shadow-[0_15px_30px_rgba(128,90,213,0.35)]
+                hover:shadow-[0_20px_40px_rgba(128,90,213,0.5)]
                 transition-shadow duration-500">
       <img src="assets/photo7.jpeg"
-           class="w-full h-48 object-cover rounded-xl
-                  transition-transform duration-500 hover:scale-105">
+           class="w-full h-36 sm:h-40 md:h-44 object-cover rounded-xl transition-transform duration-500 hover:scale-105">
     </div>
 
     <div onclick="openModal(3)"
-         class="cursor-pointer bg-white/70 backdrop-blur-md rounded-2xl p-5
-                shadow-[0_20px_40px_rgba(128,90,213,0.35)]
-                hover:shadow-[0_25px_50px_rgba(128,90,213,0.5)]
+         class="cursor-pointer bg-white/70 backdrop-blur-md rounded-2xl overflow-hidden
+                shadow-[0_15px_30px_rgba(128,90,213,0.35)]
+                hover:shadow-[0_20px_40px_rgba(128,90,213,0.5)]
                 transition-shadow duration-500">
       <img src="assets/photo8.jpeg"
-           class="w-full h-48 object-cover rounded-xl
-                  transition-transform duration-500 hover:scale-105">
+           class="w-full h-36 sm:h-40 md:h-44 object-cover rounded-xl transition-transform duration-500 hover:scale-105">
     </div>
 
   </div>
@@ -169,7 +132,7 @@
     const messages = [
       "This smile right here? It melts me every single time 😌💜",
       "Every time I see this photo, I fall for you all over again 😍😩",
-      "You are so beautiful princess and i'm ever proud of you 😝✨ ",
+      "You are so beautiful princess and I'm proud of you 😝✨",
       "Moments like this make me wish I could freeze time with you 🌸💜"
     ];
 

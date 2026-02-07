@@ -5,154 +5,184 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Valentine App ❤️‍🩹</title>
 <script src="https://cdn.tailwindcss.com"></script>
+
 <style>
-  /* Fade-in animation */
-  @keyframes fadeIn {
-    from {opacity: 0; transform: translateY(20px);}
-    to {opacity: 1; transform: translateY(0);}
-  }
-  .animate-fadeIn { animation: fadeIn 1s ease forwards; }
+/* Fade-in animation */
+@keyframes fadeIn {
+  from {opacity: 0; transform: translateY(20px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+.animate-fadeIn { animation: fadeIn 1s ease forwards; }
 
-  /* Background gradient animation */
-  @keyframes bgShift {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-  }
-  body {
-    background: linear-gradient(135deg, #ffccd5, #d9a7c7, #cda4de);
-    background-size: 400% 400%;
-    animation: bgShift 20s ease infinite;
-  }
+/* Background gradient animation */
+@keyframes bgShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+body {
+  background: linear-gradient(135deg, #ffccd5, #d9a7c7, #cda4de);
+  background-size: 400% 400%;
+  animation: bgShift 20s ease infinite;
+}
 
-  /* Floating hearts */
-  .heart {
-    position: absolute;
-    pointer-events: none;
-    font-size: 1.8rem;
-    opacity: 0.5;
-    animation: floatUp linear infinite;
-  }
-  @keyframes floatUp {
-    from { transform: translateY(110vh) rotate(0deg); }
-    to { transform: translateY(-130vh) rotate(360deg); }
-  }
+/* Floating hearts */
+.heart {
+  position: absolute;
+  pointer-events: none;
+  font-size: 1.8rem;
+  opacity: 0.5;
+  animation: floatUp linear infinite;
+}
+@keyframes floatUp {
+  from { transform: translateY(110vh) rotate(0deg); }
+  to { transform: translateY(-130vh) rotate(360deg); }
+}
 
-  /* Sparkles */
-  .sparkle {
-    position: absolute;
-    width: 6px;
-    height: 6px;
-    background: radial-gradient(circle, #fffacd, #ff69b4);
-    border-radius: 50%;
-    opacity: 0;
-    animation: sparkleAnim linear infinite;
-  }
-  @keyframes sparkleAnim {
-    0% { transform: scale(0.5); opacity: 0; }
-    50% { transform: scale(1.2); opacity: 1; }
-    100% { transform: scale(0.5); opacity: 0; }
-  }
+/* Sparkles */
+.sparkle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: radial-gradient(circle, #fffacd, #ff69b4);
+  border-radius: 50%;
+  opacity: 0;
+  animation: sparkleAnim linear infinite;
+}
+@keyframes sparkleAnim {
+  0% { transform: scale(0.5); opacity: 0; }
+  50% { transform: scale(1.2); opacity: 1; }
+  100% { transform: scale(0.5); opacity: 0; }
+}
 
-  /* Smooth No button movement */
-  #no-btn { transition: all 0.3s ease; }
+/* No button smooth movement */
+#no-btn { transition: all 0.3s ease; }
 
-  /* Yes button sparkle effect */
-  #yes-btn {
-    position: relative;
-    overflow: hidden;
-  }
-  #yes-btn .sparkle-hover {
-    position: absolute;
-    width: 4px;
-    height: 4px;
-    background: radial-gradient(circle, #fffacd, #ff69b4);
-    border-radius: 50%;
-    opacity: 0;
-    pointer-events: none;
-    animation: sparkleHover 0.6s ease forwards;
-  }
-  @keyframes sparkleHover {
-    0% { transform: translate(0,0) scale(0.3); opacity: 1; }
-    100% { transform: translate(var(--x), var(--y)) scale(1); opacity: 0; }
-  }
-
+/* Yes button sparkle effect */
+#yes-btn {
+  position: relative;
+  overflow: hidden;
+}
+#yes-btn .sparkle-hover {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: radial-gradient(circle, #fffacd, #ff69b4);
+  border-radius: 50%;
+  opacity: 0;
+  pointer-events: none;
+  animation: sparkleHover 0.6s ease forwards;
+}
+@keyframes sparkleHover {
+  0% { transform: translate(0,0) scale(0.3); opacity: 1; }
+  100% { transform: translate(var(--x), var(--y)) scale(1); opacity: 0; }
+}
 </style>
 </head>
+
 <body class="min-h-screen flex flex-col items-center justify-center px-4 relative overflow-hidden">
 
-  <!-- Floating hearts in background -->
-  <span class="heart" style="left:10%; animation-duration:18s;">💖</span>
-  <span class="heart" style="left:30%; animation-duration:50s;">💜</span>
-  <span class="heart" style="left:50%; animation-duration:36s;">💗</span>
-  <span class="heart" style="left:70%; animation-duration:40s;">💖</span>
-  <span class="heart" style="left:85%; animation-duration:30s;">💜</span>
-  <span clas="flowers" style="left:100%; animation-duration:21s;">🌸</span>
+<!-- Background Video -->
+<video autoplay muted loop playsinline class="fixed top-0 left-0 w-full h-full object-cover scale-105 z-[-1]">
+  <source src="video1.mp4" type="video/mp4">
+</video>
 
-  <!-- Floating hearts GIF -->
-  <img 
-    src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExc3ppZDBib2h4bmZnYnRtbm0wbTFhdDdhdmhheDhtazdrcHVzdmdtdiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/vdy08VCmyx1vq87J7m/giphy.gif"
-    alt="Cute hearts"
-    class="w-48 h-48 mb-4 animate-fadeIn"
-  >
+<!-- BACKGROUND MUSIC -->
+<audio id="bg-music" loop preload="auto">
+  <source src="music.mp3" type="audio/mp3">
+</audio>
 
-  <!-- Valentine Card with Sparkles -->
-  <div class="bg-purple-500/70 backdrop-blur-md rounded-3xl shadow-2xl p-8 flex flex-col items-center gap-6 relative animate-fadeIn">
-    
-    <h1 class="text-3xl sm:text-4xl font-bold text-rose-600 text-center">
-      Will you be my Valentine? 🌸💐❤️
-    </h1>
+<!-- Floating hearts -->
+<span class="heart" style="left:10%; animation-duration:18s;">💖</span>
+<span class="heart" style="left:30%; animation-duration:50s;">💜</span>
+<span class="heart" style="left:50%; animation-duration:36s;">💗</span>
+<span class="heart" style="left:70%; animation-duration:40s;">💖</span>
+<span class="heart" style="left:85%; animation-duration:30s;">💜</span>
+<span class="heart" style="left:95%; animation-duration:21s;">🌸</span>
 
-    <!-- Sparkles inside card -->
-    <span class="sparkle" style="top:10%; left:20%; animation-duration:2s;"></span>
-    <span class="sparkle" style="top:30%; left:70%; animation-duration:2.5s;"></span>
-    <span class="sparkle" style="top:60%; left:40%; animation-duration:1.8s;"></span>
-    <span class="sparkle" style="top:50%; left:55%; animation-duration:2.2s;"></span>
-    <span class="sparkle" style="top:20%; left:50%; animation-duration:2.7s;"></span>
+<!-- Cute hearts GIF -->
+<img 
+  src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExc3ppZDBib2h4bmZnYnRtbm0wbTFhdDdhdmhheDhtazdrcHVzdmdtdiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/vdy08VCmyx1vq87J7m/giphy.gif"
+  alt="Cute hearts"
+  class="w-48 h-48 mb-4 animate-fadeIn"
+/>
 
-    <!-- Buttons inside card -->
-    <div class="flex gap-6 relative w-full justify-center">
-      <a id="yes-btn"
-        href="result.html"
-        class="bg-rose-500 text-white px-8 py-3 rounded-full font-medium shadow-lg transition hover:scale-105 overflow-hidden relative"
-      >
-        Yes ❤️💜
-      </a> 
-      <button id="no-btn"
-        class="bg-gray-400 text-white px-8 py-3 rounded-full font-medium shadow-lg absolute top-0 left-36"
-      >
-        No 💔
-      </button>
-    </div>
+<!-- Valentine Card -->
+<div class="bg-purple-500/70 backdrop-blur-md rounded-3xl shadow-2xl p-8 flex flex-col items-center gap-6 relative animate-fadeIn">
+  
+  <h1 class="text-3xl sm:text-4xl font-bold text-rose-600 text-center">
+    Will you be my Valentine? 🌸💐❤️
+  </h1>
+
+  <!-- Sparkles inside card -->
+  <span class="sparkle" style="top:10%; left:20%; animation-duration:2s;"></span>
+  <span class="sparkle" style="top:30%; left:70%; animation-duration:2.5s;"></span>
+  <span class="sparkle" style="top:60%; left:40%; animation-duration:1.8s;"></span>
+  <span class="sparkle" style="top:50%; left:55%; animation-duration:2.2s;"></span>
+  <span class="sparkle" style="top:20%; left:50%; animation-duration:2.7s;"></span>
+
+  <!-- Buttons -->
+  <div class="flex gap-6 relative w-full justify-center">
+    <a id="yes-btn"
+      href="result.html"
+      class="bg-rose-500 text-white px-8 py-3 rounded-full font-medium shadow-lg transition hover:scale-105"
+    >
+      Yes ❤️💜
+    </a>
+
+    <button id="no-btn"
+      class="bg-gray-400 text-white px-8 py-3 rounded-full font-medium shadow-lg absolute top-0 left-36"
+    >
+      No 💔
+    </button>
   </div>
+</div>
 
-  <!-- JS -->
-  <script>
-    const noBtn = document.getElementById('no-btn');
-    noBtn.addEventListener('mouseenter', () => {
-      const maxX = window.innerWidth - noBtn.offsetWidth - 20;
-      const maxY = window.innerHeight - noBtn.offsetHeight - 20;
-      const randomX = Math.floor(Math.random() * maxX);
-      const randomY = Math.floor(Math.random() * maxY);
-      noBtn.style.left = randomX + 'px';
-      noBtn.style.top = randomY + 'px';
-    });
+<!-- JAVASCRIPT -->
+<script>
 
-    // Sparkle burst on Yes button hover
-    const yesBtn = document.getElementById('yes-btn');
-    yesBtn.addEventListener('mouseenter', () => {
-      for(let i=0;i<6;i++){
-        const sparkle = document.createElement('span');
-        sparkle.classList.add('sparkle-hover');
-        const x = (Math.random()*60 - 30)+'px';
-        const y = (Math.random()*60 - 30)+'px';
-        sparkle.style.setProperty('--x', x);
-        sparkle.style.setProperty('--y', y);
-        yesBtn.appendChild(sparkle);
-        setTimeout(()=> sparkle.remove(), 600);
-      }
-    });
-  </script>
+/* No button runs away */
+const noBtn = document.getElementById('no-btn');
+noBtn.addEventListener('mouseenter', () => {
+  const maxX = window.innerWidth - noBtn.offsetWidth - 20;
+  const maxY = window.innerHeight - noBtn.offsetHeight - 20;
+  noBtn.style.left = Math.random() * maxX + "px";
+  noBtn.style.top = Math.random() * maxY + "px";
+});
+
+/* Yes button sparkles */
+const yesBtn = document.getElementById('yes-btn');
+yesBtn.addEventListener('mouseenter', () => {
+  for(let i = 0; i < 6; i++){
+    const sparkle = document.createElement('span');
+    sparkle.classList.add('sparkle-hover');
+    sparkle.style.setProperty('--x', (Math.random()*60 - 30) + 'px');
+    sparkle.style.setProperty('--y', (Math.random()*60 - 30) + 'px');
+    yesBtn.appendChild(sparkle);
+    setTimeout(() => sparkle.remove(), 600);
+  }
+});
+
+/* MUSIC FIX (BROWSER SAFE) */
+const music = document.getElementById("bg-music");
+music.volume = 0.7;
+
+function startMusic() {
+  music.play().catch(e => console.log("Autoplay blocked"));
+  document.removeEventListener("click", startMusic);
+  document.removeEventListener("touchstart", startMusic);
+}
+
+// Play after user interaction
+document.addEventListener("click", startMusic);
+document.addEventListener("touchstart", startMusic);
+
+// Optional: play when YES clicked
+yesBtn.addEventListener("click", () => {
+  music.play();
+});
+
+</script>
 
 </body>
 </html>
